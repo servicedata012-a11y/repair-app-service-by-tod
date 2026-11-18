@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>บันทึกข้อมูลการซ่อม Service</title>
+<style>
+  /* ปรับความสูงที่ใช้ซ่อนแถบคำเตือนของ Google ได้ที่นี่ หรือทดสอบสดด้วย ?crop=ตัวเลข ต่อท้ายลิงก์ (เช่น ?crop=0 เพื่อดูแถบจริง) */
+  :root { --crop: 40px; }
+  html, body { margin: 0; height: 100%; overflow: hidden; background: #f3f5f9; }
+  .wrap { position: fixed; inset: 0; overflow: hidden; }
+  iframe { position: absolute; left: 0; top: calc(-1 * var(--crop)); width: 100%; height: calc(100% + var(--crop)); border: 0; }
+</style>
+</head>
+<body>
+<div class="wrap"><iframe id="app" title="บันทึกข้อมูลการซ่อม Service" allow="fullscreen; clipboard-write; camera"></iframe></div>
+<script>
+  // ★ ใส่ลิงก์เว็บแอป Apps Script (ลงท้าย /exec) ตรงนี้
+  var APP_URL = 'https://script.google.com/macros/s/AKfycbyZTLje_wUin-FU_krrSY4KZEGkTb4CL0cmVcxTQfeyhRjTxZvpZBrjmG347C0wUokZ/exec';
+
+  var q = new URLSearchParams(location.search), c = q.get('crop');
+  if (c !== null && /^\d{1,3}$/.test(c)) document.documentElement.style.setProperty('--crop', c + 'px');
+  document.getElementById('app').src = APP_URL;
+</script>
+</body>
+</html>
